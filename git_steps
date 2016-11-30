@@ -1,0 +1,33 @@
+1)git checkout <branchname> 
+
+2) nano /var/www/html/path/to/file/sample.blade.php
+
+3) git add .
+
+4) git commit -m "tesing new changes"
+
+5) git push origin <branchname> 
+
+================ BIT BUCKKET===========
+
+6) check your latest commit changes
+
+7) create a pull request from branch to dev-ops branch
+
+8) go to pull request > open related request and merge the file to dev-ops branch
+
+============= IF Confilicts arised ===========
+
+9) git pull origin <masterbranch> dev-ops
+
+10) open sample.blade.php file and remove the conflicts and follow the same steps 3 to 8 again
+
+=========== Create a new issue in jira and create a new branch in that issue======
+
+11) in local  git fetch && git checkout (new branch name)
+
+git status  : check whether ur in new branch or not  
+
+git checkout new_branch_name : Move form one branch to another branch.
+
+now perform steps 2,3,4,5.
