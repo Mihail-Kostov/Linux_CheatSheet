@@ -110,3 +110,139 @@ commands
 }
 
 And call it with: fname2 arg1 arg2 ... argN
+
+
+
+
+
+
+
+
+
+Condition Logic
+If you’ve gotten this far, you’ve either mastered English or  Google Translate. “If, then” is a common English logic construct. If he looks like a douche and he talks like a douche, then he’s probably a douche. Most computer languages skip the superfluous “then.” Not sh! If you skip it, your program will explode in several million pieces. (Or not, but whatever).
+Here’s a sh conditional:
+
+if [ $opt -eq 1 ]; then
+  HOST="www.joedog.org"
+elif [ $opt -eq 2 ]; then
+  HOST="ftp.joedog.org"
+else
+  HOST="ssl.joedog.org"
+fi
+
+Your author tested that logic and it works like a charm. But what happens if opt is unitialized? Let’s say we want to assign a value  at run time: opt=$1 # $0 is the program’s name, $1 is the first arg. If a user runs your script without providing an argument, your program is gonna explode is several million pieces. (Or not, …)
+
+Ben $ sh haha  
+haha: line 4: [: -eq: unary operator expected
+haha: line 6: [: -eq: unary operator expected
+
+It’s pretty hard to evaluate nothing. We can avoid this problem by ensuring $opt evaluates to something. It’s best set it explicitly, but we can also provide it with a default value. Check this out:
+
+if [ ${opt:-0} -eq 1 ] ; then
+  HOST="www.joedog.org"
+elif [ ${opt:-0} -eq 2 ] ; then
+  HOST="ftp.joedog.org"
+else
+  HOST="ssl.joedog.org"
+fi
+
+Logical Boolean Operators
+Do the business people in your company have exceptions for every rule? “Do this, no that, except when, but if…” If that’s the case, you’re gonna need yourself some boolean operators.
+
+  && - logical AND  if [ condition1 ] && [ condition2 ]
+  || - logical OR   if [ condition1 ] || [ condition2 ]
+  !  - logical NOT  if [ ! condition ]
+
+What? You want more explicit examples? Sheesh.
+
+A=10
+B=11
+
+if [ $A -eq 10 ] && [ $B -eq 11 ] ;
+then
+  echo "Whoo hoo!"
+fi
+
+if [ $A -eq 11 ] || [ $B -eq 11 ] ;
+then
+  echo "Whoo hoo!"
+fi
+
+if [ ! $A -eq 11 ];
+then
+  echo "Whoo hoo!"
+fi
+
+Ben $ sh papa
+Whoo hoo!
+Whoo hoo!
+Whoo hoo!
+
+sh Arrays
+
+Arrays are ordered lists of values. Each value can be accessed by the value’s index in the list. Imagine a key chain, the keys are the values and the chain is the array. Rather than track every key you own, just remember where you put the chain. Where did I put that?
+
+Unfortunately, sh arrays aren’t quite as convenient as a key chain. It is necessary to maintain individual variables but strategic name selection can make access easier. Here’s how we build a sh array:
+
+#!/bin/sh
+
+a="Homer Marge Bart Lisa"
+for CHARACTER in $a ; do
+  echo $CHARACTER
+done
+
+Ben $ sh haha
+Homer
+Marge
+Bart
+Lisa
+That was convenient. Unfortunately, we can’t reference each value by its index. The perl motto applies to sh as well: “There’s more than one way to do it!” Or something like that. Here’s an array implementation with index references:
+
+#!/bin/sh
+
+a0="Homer"
+a1="Marge"
+a2="Bart"
+a3="Lisa"
+
+# I used standard C array indexing which starts
+# at zero. I could have just as easily started at
+# 1 or 1000. 
+
+# 
+# Now we'll loop through the "array" and access its
+# values with "eval" 
+
+i=0
+y=4
+while [ $i -lt $y ]
+do
+  eval echo "a${i} = ${a${i}}"
+  let i=$i+1
+done
+
+Ben $ sh haha
+a0 = Homer
+a1 = Marge
+a2 = Bart
+a3 = Lisa
+I know what you’re saying, “meh!” Fortunately, there are alternatives to this kludge. If you’re scripting on Linux, your sh is actually bash which has much better support for arrays. Let’s bashify this script, shall we?
+ 
+
+#!/bin/sh 
+SIMPSON[0]="Homer"
+SIMPSON[1]="Marge"
+SIMPSON[2]="Bart"
+SIMPSON[3]="Lisa"
+
+SIMPSONS=${SIMPSON[@]}
+for CHARACTER in $SIMPSONS ; do
+  echo $CHARACTER
+done
+
+Ben $ sh haha
+Homer
+Marge
+Bart
+Lisa
