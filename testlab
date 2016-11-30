@@ -90,3 +90,23 @@ cat filname | awk -F ' ' "{print $2}"// -d is deliminator $1 for column 1, $2 fo
 ls | xargs ls -la
 
 execute a script and ask for username .. dob  outpout: hi
+
+
+Functions
+
+Create a function:
+
+fname(){
+commands
+}
+
+
+Call it by using the following syntax: fname
+
+Or, create a function that accepts arguments:
+
+fname2 (arg1,arg2...argN){
+commands
+}
+
+And call it with: fname2 arg1 arg2 ... argN
