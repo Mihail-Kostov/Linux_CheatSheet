@@ -1,5 +1,7 @@
 du -sch filename // to konw the size of the file
 
+nano +10 filename // to go to particular line number in a file
+
 for x in 'ls /home/vanme'
 do 
 du -sch $x
@@ -14,8 +16,6 @@ y=5
 let z=x+y or let z=$x+$y or z=`expr $x + $y` or z=$(( $x + $y ))
 echo "$x+$y = $z"
 or
-
-
 
 
 if [ condition ]
@@ -66,7 +66,7 @@ if [ $x -gt 5 -a  $x -lt 15 ]; then echo $X; else echo "$x is greater than 10 ";
 if(($x >= 10 && $x <= 40)); then  echo $x; else  echo "$x is greater than 10"; fi
 if(($x <= 10)); then  echo $x; else  echo "$x is greater than 10"; fi
 if [ $x -gt 10 ]; then echo $x; else echo "$x is greater than 10"; fi
- for x in `cat test | tr ' ' '\n' `; do if [ $x -lt 100 ]; then  echo "$x is less than 100"; else echo "$x is gerater than 100"; fi; done
+for x in `cat test | tr ' ' '\n' `; do if [ $x -lt 100 ]; then  echo "$x is less than 100"; else echo "$x is gerater than 100"; fi; done
 
 find . -type f -empty  // to find all the empty files in current directory
 
@@ -110,13 +110,6 @@ commands
 }
 
 And call it with: fname2 arg1 arg2 ... argN
-
-
-
-
-
-
-
 
 
 Condition Logic
