@@ -75,4 +75,18 @@ find Desktop -maxdepth 3 -type f -empty -iname "filename" //
 egerp -iw "error|errors|days" filename
 grep -iw "error" filename
 grep -A2 "error" filename
+echo $? / to check the last command status. 
 
+!! /to execute the last command name and result of it
+read // read the input form user
+: 'dsfsdf' // to comment multiple lines
+
+for x in seq 0 30; do date --date "$x days ago" + %y:%m:%d; done
+
+cat filname | cut -d ' ' -f1 // -d is deliminator f1 for column 1, f2 for column 2 ...
+cat filname | awk -F ' ' "{print $2}"// -d is deliminator $1 for column 1, $2 for column 2
+
+
+ls | xargs ls -la
+
+execute a script and ask for username .. dob  outpout: hi
