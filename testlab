@@ -1,0 +1,78 @@
+du -sch filename // to konw the size of the file
+
+for x in 'ls /home/vanme'
+do 
+du -sch $x
+echo "$x : size : 'du -sch $x'"
+done
+
+
+addition:  //same as subtraction, multiplication, division
+x=10
+y=5
+
+let z=x+y or let z=$x+$y or z=`expr $x + $y` or z=$(( $x + $y ))
+echo "$x+$y = $z"
+or
+
+
+
+
+if [ condition ]
+then 
+echo "adsfads"
+else
+echo "asdf"
+fi
+
+
+In if condition if your using [] brackets then the condition operation should be like
+-ne: not equal
+-eq : equal
+-gt : greater than
+-lt : less than
+-a : and
+-o : or
+
+ex: 
+x=10
+if [ $x -gt 5 ]
+then 
+echo "$x is greater than 5"
+else
+echo "$x is lower than 5"
+fi
+
+In if condition if your using (()) brackets then the condition operation should be like below. here you should use double paranthasis
+!: not equal
+= : equal
+> : greater than
+< : less than
+&& : and
+|| : or
+
+ex: 
+x=10
+if(($x < 5))
+then 
+echo "$x is greater than 5"
+else
+echo "$x is lower than 5"
+fi
+
+
+if [ $x -gt 5 ] && [ $x -lt 15 ]; then echo $x; else echo "$x is greater than 10 "; fi
+if [ $x -gt 5 -a  $x -lt 15 ]; then echo $X; else echo "$x is greater than 10 "; fi
+if(($x >= 10 && $x <= 40)); then  echo $x; else  echo "$x is greater than 10"; fi
+if(($x <= 10)); then  echo $x; else  echo "$x is greater than 10"; fi
+if [ $x -gt 10 ]; then echo $x; else echo "$x is greater than 10"; fi
+
+
+find . -type f -empty  // to find all the empty files in current directory
+
+find Desktop -maxdepth 3 -type f -empty -iname "filename" // 
+
+egerp -iw "error|errors|days" filename
+grep -iw "error" filename
+grep -A2 "error" filename
+
