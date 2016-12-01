@@ -1,0 +1,24 @@
+#!/bin/bash
+# function b will executes first  then function a will executes. the value of e  will be the value  in the last function. 
+#As a function executes last it will  consider e as 5 
+
+echo enter a
+read  fun
+
+a () {
+echo "this is function a"
+e=5
+echo "x value from a function is : $e  "
+b
+}
+
+b () {
+echo "this is function b"
+e=10
+echo "x value from b function is : $e  "
+
+}
+
+$fun
+echo "x value form outside of funcion is : $e "
+
